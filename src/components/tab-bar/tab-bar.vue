@@ -39,7 +39,7 @@
     width: 100vw
     justify-content: space-evenly
     display: flex
-    z-index: 9999
+    z-index: 13
     bottom: 0
     border-top: 1px solid #f0f0f0
     font-size: 12px

@@ -4,7 +4,13 @@
   const mainStore = useMainStore();
 </script>
 <template>
-  <div v-if="mainStore.isLoading" class="loading">Loading...</div>
+  <div
+    v-if="mainStore.isLoading"
+    class="loading"
+    @click="mainStore.isLoading = false"
+  >
+    Loading...
+  </div>
 </template>
 <style lang="sass" scoped>
   .loading

@@ -6,7 +6,7 @@
 <template>
   <!-- 对路由进行优化减少网络请求 -->
   <router-view v-slot="{ Component }">
-    <keep-alive>
+    <keep-alive exclude="details">
       <component :is="Component" />
     </keep-alive>
   </router-view>

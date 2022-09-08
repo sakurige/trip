@@ -36,6 +36,11 @@ const routes: Readonly<RouteRecordRaw[]> = [
     path: "/search",
     component: () => import("@/views/search/search.vue"),
   },
+  {
+    name: "details",
+    path: "/details/:id",
+    component: () => import("@/views/details/details.vue"),
+  },
 ];
 const router = createRouter({
   history: createWebHistory(),

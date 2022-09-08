@@ -11,7 +11,6 @@ const useCityStore = defineStore("city", {
   actions: {
     async fetchAllCitiesData() {
       const res: any = await getCityAll();
-      console.log(res);
       this.city = res.data;
     },
     changeCurrent(currentCity: City) {

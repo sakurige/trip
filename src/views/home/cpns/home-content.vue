@@ -6,7 +6,10 @@
   import { useScroll } from "@/hooks";
   import { computed, ref, watch } from "vue";
   import useMainStore from "@/stores/modules/main";
+  import { useRouter } from "vue-router";
+  import type { HouseListData } from "@/services/modules/types/home";
 
+  const router = useRouter();
   const homeStore = useHomeStore();
   const { houseList } = storeToRefs(homeStore);
   //  滚动处理
@@ -23,6 +26,10 @@
   //  输入框的时间部分
   const mainStore = useMainStore();
   const { endTimeFormat, startTimeFormat } = storeToRefs(mainStore);
+  //  houseListItem 点击
+  const clickHandler = (item: HouseListData) => {
+    router.push(`/details/${item.houseId}`);
+  };
 </script>
 <template>
   <div v-if="showBox" class="main-search-box">
@@ -53,10 +60,12 @@
       <house-list-item-v1
         v-if="item.discoveryContentType === 3"
         :data="item.data"
+        @click="clickHandler"
       />
       <house-list-item-v2
         v-else-if="item.discoveryContentType === 9"
         :data="item.data"
+        @click="clickHandler(item.data)"
       />
     </template>
   </div>
