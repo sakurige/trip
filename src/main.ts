@@ -7,6 +7,5 @@ import pinia from "./stores";
 // router引入
 import router from "./router";
 import "./assets/css/index.sass";
-import "@/services";
 
 createApp(App).use(pinia).use(router).mount("#app");

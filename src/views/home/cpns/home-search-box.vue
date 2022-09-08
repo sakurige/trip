@@ -1,7 +1,13 @@
 <script lang="ts" setup>
+  import { useRouter } from "vue-router";
   import HomeDateBox from "./home-date-box.vue";
   import Location from "./location.vue";
   import HotSuggest from "./hot-suggests.vue";
+
+  const router = useRouter();
+  const clickHandler = () => {
+    router.push("/search");
+  };
 </script>
 <template>
   <div class="search-box">
@@ -13,7 +19,7 @@
     </div>
     <div class="tips">关键字/位置/名宿名</div>
     <hot-suggest />
-    <div class="search-btn">开始搜索</div>
+    <div class="search-btn" @click="clickHandler">开始搜索</div>
   </div>
 </template>
 

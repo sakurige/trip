@@ -1,13 +1,23 @@
 <script lang="ts" setup>
+  import { ref, watch } from "vue";
+  import { useRoute } from "vue-router";
   import tabBarData from "@/assets/data/tab-bar-data";
-  import { ref } from "vue";
+
   import TabBarItem from "./tab-bar-item.vue";
+
+  const route = useRoute();
 
   const currentIdx = ref(0);
   const switchBar = (idx: number) => {
     // 改变当前idx
     currentIdx.value = idx;
   };
+  //  路由BUG处理 直接在地址栏中输入路由 tabbar 不改变的BUG
+  watch(route, () => {
+    currentIdx.value = tabBarData.findIndex((item) => {
+      return item.path === route.path;
+    });
+  });
 </script>
 <template>
   <div class="tab-bar">

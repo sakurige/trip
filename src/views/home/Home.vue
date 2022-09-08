@@ -5,11 +5,14 @@
   import HomeContent from "./cpns/home-content.vue";
 
   import useHomeStore from "@/stores/modules/home";
+  import useCityStore from "@/stores/modules/city";
 
   const homeStore = useHomeStore();
   homeStore.fetchHomeCategory();
   homeStore.fetchHomeSuggest();
   homeStore.fetchHomeHouseList();
+  const cityStore = useCityStore();
+  cityStore.fetchAllCitiesData();
 </script>
 <template>
   <div class="Home">

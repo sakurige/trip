@@ -1,11 +1,15 @@
-<script setup lang="ts">
-  import { defineProps, ref, watch, type PropType, useAttrs } from "vue";
+<script lang="ts" setup>
+  import { defineProps, type PropType } from "vue";
   import { getAssetsURL } from "@/utils/getAssets";
   import { useRoute, useRouter } from "vue-router";
+
+  const route = useRoute();
+
   interface imgUrlTypes {
     normalImg: string;
     activeImg: string;
   }
+
   const props = defineProps({
     url: {
       type: Object as PropType<imgUrlTypes>,
@@ -28,6 +32,7 @@
       required: true,
     },
   });
+
   // 子组件向父组件发送事件
   const emits = defineEmits(["switch-bar"]);
   // 使用路由用于切换
@@ -41,7 +46,7 @@
   };
 </script>
 <template>
-  <div class="tab-bar-item" @click="changeRoute" :class="{ active: isActive }">
+  <div :class="{ active: isActive }" class="tab-bar-item" @click="changeRoute">
     <img v-show="isActive" :src="getAssetsURL(url.activeImg)" alt="" />
     <img v-show="!isActive" :src="getAssetsURL(url.normalImg)" alt="" />
     <span>{{ text }}</span>
@@ -54,13 +59,16 @@
     flex-direction: column
     justify-content: space-between
     align-items: center
+
     img
       box-sizing: border-box
       padding-top: 6px
       height: 28px
+
     span
       box-sizing: border-box
       padding-top: 2px
+
   .active
     color: red
 </style>

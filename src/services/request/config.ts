@@ -1,5 +1,5 @@
 const devConfig = {
-  baseURL: "http://127.0.0.1:3000",
+  baseURL: "http://codercba.com:1888",
   timeout: 3000,
 };
 export { devConfig };

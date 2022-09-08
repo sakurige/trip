@@ -6,13 +6,13 @@ const getHotSuggests = () =>
   });
 const getCategory = () =>
   request.get({
-    url: "/api/home/category",
+    url: "api/home/categories",
   });
-const getHouseList = () =>
+const getHouseList = (page: number) =>
   request.get({
-    url: "/api/home/houseList",
+    url: "/api/home/houselist",
     params: {
-      page: 1,
+      page,
     },
   });
 

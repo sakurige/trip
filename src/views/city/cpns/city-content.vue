@@ -13,8 +13,8 @@
   });
   const idxList = computed(() => {
     // 根据实际数据得到索引
-    let indexList = props.currentCityGroup.cities.map((item) => item.group);
-    indexList.unshift("#");
+    let indexList = props.currentCityGroup?.cities.map((item) => item.group);
+    indexList?.unshift("#");
     return indexList;
   });
   const getCurrentCity = (city: City) => {
@@ -29,7 +29,10 @@
     <van-index-bar :index-list="idxList" highlight-color="#039be5">
       <van-index-anchor index="热门" />
       <div class="warp-box">
-        <template v-for="item in currentCityGroup.hotCities" :key="item.cityId">
+        <template
+          v-for="item in currentCityGroup?.hotCities"
+          :key="item.cityId"
+        >
           <div class="hot-city" @click="getCurrentCity(item)">
             {{ item.cityName }}
           </div>

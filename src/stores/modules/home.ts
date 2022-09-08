@@ -15,6 +15,7 @@ const useHomeStore = defineStore("home", {
     hotSuggests: [] as Array<HotSuggest>,
     category: [] as Array<Category>,
     houseList: [] as Array<HouseList>,
+    page: 1,
   }),
   actions: {
     async fetchHomeSuggest() {
@@ -26,8 +27,9 @@ const useHomeStore = defineStore("home", {
       this.category = res.data;
     },
     async fetchHomeHouseList() {
-      const res: any = await getHouseList();
-      this.houseList = res.data;
+      const res: any = await getHouseList(this.page);
+      this.page++;
+      this.houseList.push(...res.data);
     },
   },
 });
